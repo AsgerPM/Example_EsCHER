@@ -24,3 +24,5 @@ plot_species_distribution <- function(data, variable_name) {
 # Example usage:
 # Plot the distribution of 'body_mass_g' for each penguin species
 # plot_species_distribution(palmerpenguins::penguins, "body_mass_g")
+
+# Lets add a pull request?
