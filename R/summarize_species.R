@@ -2,8 +2,8 @@
 #'
 #' Summarise the count, arithmetic mean, standard deviation, and minimum and maximum values for a specified numeric variable in a dataframe dataset of species
 #' @param data A data frame containing information about different species, with at least one numeric variable and a variable named species to group by
-#' @variable A numeric variable to summarise
-#' @return A dataframe containing the summary variables (count, arithmetic mean, standard deviation, minimum and maximum value) for the chosen variable
+#' @param variable A numeric variable to summarise
+#' @return A histogram of the containing the summary variables (count, arithmetic mean, standard deviation, minimum and maximum value) for the chosen variable
 #' @examples
 #' Example usage:
 #' summarize_species(data = palmerpenguins::penguins,
