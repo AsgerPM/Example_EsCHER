@@ -1,18 +1,32 @@
-# Hello, world!
-#
-# This is an example function named 'hello' 
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Install Package:           'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
+#' Summarisation of species
+#'
+#' Summarise the count, arithmetic mean, standard deviation, and minimum and maximum values for a specified numeric variable in a dataframe dataset of species
+#' @param data A data frame containing information about different species, with at least one numeric variable and a variable named species to group by
+#' @variable A numeric variable to summarise
+#' @return A dataframe containing the summary variables (count, arithmetic mean, standard deviation, minimum and maximum value) for the chosen variable
+#' @examples
+#' Example usage:
+#' summarize_species(data = palmerpenguins::penguins,
+#'                variable = flipper_length_mm)
+#' @export
 
-hello <- function() {
-  print("Hello, world!")
+# Function to calculate summary statistics for a specified numeric variable by species
+summarize_species <- function(data, variable) {
+
+  require(dplyr)
+
+  data %>%
+    group_by(species) %>%
+    summarise(
+      Count = n(),
+      Mean = mean({{variable}}, na.rm = TRUE),
+      SD = sd({{variable}}, na.rm = TRUE),
+      Min = min({{variable}}, na.rm = TRUE),
+      Max = max({{variable}}, na.rm = TRUE)
+    ) %>%
+    ungroup()
 }
+
+# Example usage:
+summarize_species(data = palmerpenguins::penguins,
+                  variable = flipper_length_mm)
